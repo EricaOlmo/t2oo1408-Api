@@ -1,41 +1,46 @@
 <?php
 
 namespace MyApp\Dao;
+
+use MyApp\Models\User;
+use PDO;
 /**
  * Description of DaoUser
  *
- * @author Erica
+ * @author drink
  */
 class DaoUser {
+    
     /**
-     @var type String
-     * 
-     *   */
+     *
+     * @var \PDO 
+     */
     private $conn;
-            
-    public function __construct(\PDO $conn) {
+    
+    public function __construct(PDO $conn) {
         $this->conn = $conn;
     }
+    
     public function getAllUsers(){
         
         $sql = "select * from tbl_caixa";
         
-        $prepare = $this->conn->prepare($sql); //retorna um valor
-        $prepare->execute(); //prepara a sql e executa
-        $array = $prepare->fetchAll();    //essa função tras todas as linhas que achar na consulta
+        $prepare = $this->conn->prepare($sql);
+        $prepare->execute();
+        
+        $array = $prepare->fetchAll();
         
         var_dump($array);
         
     }
-    
-    public function getById($id){
+    public function getById($id) {
+        
+    }
+    public function save(User $u) {
+        
+    }
+    public function remove(User $u) {
         
     }
     
-    public function save(\MyApp\Dao\DaoUser $u){
-        
-    }
-    public function remove (\MyApp\Dao\DaoUser $r){
-        
-    }
 }
